@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const shopContext = createContext();
 
-const ShopContextProvider = (props) => {
+const ShopContextProvider = ({children}) => {
     const currency = '$';
     const delivery_fee = 10;
     const [showSeach, setShowSearch] = React.useState(false);
@@ -92,7 +92,7 @@ const ShopContextProvider = (props) => {
 
     return (
         <shopContext.Provider value={value}>
-            {props.children}
+            {children}
         </shopContext.Provider>
     );
 

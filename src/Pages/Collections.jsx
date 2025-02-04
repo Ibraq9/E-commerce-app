@@ -14,7 +14,7 @@ const Collections = () => {
   const { products } = useContext(shopContext);
   const [ShowFilter, setShowFilter] = React.useState(true);
   const [FilterProduct, setFilterProduct] = React.useState([]);
-  const { search, setSearch, showSeach } = useContext(shopContext);
+  const { search, showSeach } = useContext(shopContext);
   const [Category, setCategory] = React.useState([]);
   const [SubCategory, setSubCategory] = React.useState([]);
   const [SortType, setSortType] = React.useState("Relavent");
