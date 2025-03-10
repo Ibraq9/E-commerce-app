@@ -2,6 +2,7 @@
 import React from "react";
 import Title from "../Components/Title";
 import { SparklesIcon, TruckIcon, TagIcon, HeartIcon } from "@heroicons/react/24/outline";
+import { assets } from "../assets/assets";
 
 const About = () => {
   return (
@@ -13,7 +14,7 @@ const About = () => {
           {/* Image Section */}
           <div className="relative group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
             <img
-              src="src\assets\My_assets\logo.jpg"
+              src={assets.logo}
               alt="About Us"
               className="w-full h-96 object-cover rounded-xl shadow-lg"
             />

@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { shopContext } from "../Context/ShopContext";
 import RelatedProducts from "../Components/RelatedProducts";
+import { assets } from "../assets/assets.js";
 
 const Product = () => {
   const [selectedProduct, setSelectedProduct] = React.useState(null);
@@ -39,13 +40,13 @@ const Product = () => {
               {[...Array(4)].map((_, i) => (
                 <img
                   key={i}
-                  src="\src\assets\star_icon.png"
+                  src={assets.star_icon}
                   alt="star rating"
                   className="w-5 h-5"
                 />
               ))}
               <img
-                src="/src/assets/star_dull_icon.png"
+                src={assets.star_dull_icon}
                 alt="star rating"
                 className="w-5 h-5"
               />

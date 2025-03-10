@@ -35,7 +35,6 @@ const Placeorder = () => {
 
 
   const PlaceOrderClicked = (e) => {
-
     e.preventDefault();
    
     const requiredFields = ['first_name', 'Last_name', 'email', 'Password', 'Country', 'City', 'Street'];

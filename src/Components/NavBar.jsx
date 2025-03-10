@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from "react";
-import SearchBar from "./SearchBar";
 import { shopContext } from "../Context/ShopContext";
+import {assets} from '../assets/assets.js'
 
 const NavBar = () => {
 
@@ -12,7 +12,7 @@ const NavBar = () => {
 
   return (
     <div className="flex items-center justify-between font-medium">
-      <NavLink to='/'><img className="w-40 cursor-pointer" src='src\assets\My_assets\logo.jpg' alt="NavBar" /></NavLink>
+      <NavLink to='/'><img className="w-40 cursor-pointer" src={assets.logo} alt="NavBar" /></NavLink>
 
       <ul className="hidden sm:flex gap-5 ">
         <NavLink to='/' className="flex flex-col items-center gap-1">
@@ -34,24 +34,24 @@ const NavBar = () => {
       </ul>
 
       <div className="flex items-center gap-6">
-        <img onClick={()=>setShowSearch(!showSeach)} className="w-4 cursor-pointer" src="src\assets\search_icon.png" alt="Search_icon" />
+        <img onClick={()=>setShowSearch(!showSeach)} className="w-4 cursor-pointer" src={assets.search_icon} alt="Search_icon" />
 
         <div className="group relative cursor-pointer shadow-lg">
           <Link to={'/Orders'}><i className="fa-regular fa-user"></i></Link>
         </div>
 
         <Link to={'/Cart'} className="relative">
-          <img className="w-5 min-w-5" src="src\assets\My_assets\cart.png" alt="cart_NavBar" />
+          <img className="w-5 min-w-5" src={assets.cart_icon} alt="cart_NavBar" />
           <p className={`absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 ${CartCount == 0? '' :'bg-black' } text-white aspect-square rounded-full text-[9px]`}>{get_Cart_Count()}</p>
         </Link>
-        <img onClick={() => { setmenuVisible(true) }} className="w-7 sm:hidden cursor-pointer" src="src\assets\My_assets\sideMenu.webp" alt="SideMenu" />
+        <img onClick={() => { setmenuVisible(true) }} className="pr-3 w-7 sm:hidden cursor-pointer" src={assets.menu_icon} alt="SideMenu" />
       </div>
 
 
       <div className={`absolute right-0 bottom-0 top-0 overflow-hidden bg-white transition-all ${menuVisible ? 'w-full' : 'w-0'}`} style={{ zIndex: 999 }}>
         <div>
-          <div onClick={() => { setmenuVisible(false) }} className="flex items-center cursor-pointer className='py-2 pl-6">
-            <img className="w-10" src="src\assets\My_assets\arraw.webp" alt="arraw back" />
+          <div onClick={() => { setmenuVisible(false) }} className="flex gap-2 mt-3 items-center cursor-pointer className='py-2 pl-6">
+            <img className="w-3" src={assets.dropdown_icon} alt="arraw back" />
             <p>Back</p>
           </div>
           <div className="flex flex-col gap-5 m-6">

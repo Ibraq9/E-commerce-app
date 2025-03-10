@@ -1,4 +1,5 @@
 import React from 'react'
+import { assets } from '../assets/assets'
 
 const Footer = () => {
     return (
@@ -7,7 +8,7 @@ const Footer = () => {
                 <div className='flex flex-col items-center '>
                     <div className='flex items-center'>
                         <p>Who are we?</p>
-                        <img src='src\assets\My_assets\logo.jpg' className='w-32' />
+                        <img src={assets.logo} className='w-32' />
                     </div>
 
                     <p className='p-4'>
@@ -18,18 +19,18 @@ const Footer = () => {
                 <div className='flex flex-col gap-5 items-center '>
                     <div className='flex items-center gap-5'>
                         <p>Contact us</p>
-                        <img src='src\assets\My_assets\contact-us-485563.webp' className='w-10' />
+                        <img src={assets.contact_img} className='w-10' />
                     </div>
 
                     <div>
 
                         <div className='flex items-center gap-3'>
-                            <img className='w-6' src='src\assets\My_assets\email.webp'/>
+                            <img className='w-6' src={assets.email}/>
                             <p>IbraContact99@Contact.com</p>
                         </div>
 
                         <div className='flex items-center gap-3'>
-                            <img className='w-6' src='src\assets\My_assets\phone.webp'/>
+                            <img className='w-6' src={assets.phone}/>
                             <p>+1 (123) 456-7890</p>
                         </div>
                     </div>
