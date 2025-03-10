@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from "react";
 import { shopContext } from "../Context/ShopContext";
-import {assets} from '../assets/assets.js'
+import Logo from '../assets/My_assets/logo.jpg';
+import { assets } from "../assets/assets";
 
 const NavBar = () => {
 
@@ -12,7 +13,7 @@ const NavBar = () => {
 
   return (
     <div className="flex items-center justify-between font-medium">
-      <NavLink to='/'><img className="w-40 cursor-pointer" src={assets.logo} alt="NavBar" /></NavLink>
+      <NavLink to='/'><img className="w-40 cursor-pointer" src={Logo} alt="NavBar" /></NavLink>
 
       <ul className="hidden sm:flex gap-5 ">
         <NavLink to='/' className="flex flex-col items-center gap-1">
