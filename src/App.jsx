@@ -1,5 +1,4 @@
 import { Routes,Route } from "react-router-dom";
-import React from "react";
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Product from './Pages/Product';
@@ -11,7 +10,7 @@ import Cart from './Pages/Cart';
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import SearchBar from "./Components/SearchBar";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
