@@ -55,7 +55,7 @@ const Placeorder = () => {
           <div className="bg-white p-8 rounded-2xl shadow-md w-full lg:w-2/3">
             <Title text1={"Delivery "} text2={"Information"} />
             <form onSubmit={PlaceOrderClicked} className="space-y-4 mt-4">
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   name="first_name"
                   value={formData.first_name}
@@ -92,7 +92,7 @@ const Placeorder = () => {
                 className="input-field w-full p-1"
               />
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   name="Country"
                   value={formData.Country}
@@ -111,7 +111,7 @@ const Placeorder = () => {
                 />
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   name="ZipCode"
                   value={formData.ZipCode}
@@ -167,9 +167,9 @@ const Placeorder = () => {
               <h2 className="text-lg font-semibold mb-4">Choose Payment Method</h2>
               <div className="flex justify-around items-center gap-4">
                 {[
-                  { name: "Mada", src: "src/assets/My_assets/Mada.png.webp" },
-                  { name: "Visa", src: "src/assets/My_assets/Visa-Logo.png" },
-                  { name: "Barq", src: "src/assets/My_assets/barq.png" },
+                  { name: "Mada", src: "./assets/My_assets/Mada.png.webp" },
+                  { name: "Visa", src: "./assets/My_assets/Visa-Logo.png" },
+                  { name: "Barq", src: "./assets/My_assets/barq.png" },
                 ].map(({ name, src }) => (
                   <div key={name} className="flex flex-col items-center space-y-1 cursor-pointer" onClick={() => setmetod(name)}>
                     <div className={`w-4 h-4 rounded-full ${method === name ? "bg-green-600" : "bg-gray-300"}`} />
