@@ -4,12 +4,10 @@ import Title from "../Components/Title";
 import { shopContext } from "../Context/ShopContext";
 import { toast } from "react-toastify";
 
-
-
 const Placeorder = () => {
-
-  const [method, setmetod] = React.useState('Visa');
+  const [method, setmetod] = React.useState("Visa");
   const { navigate } = useContext(shopContext);
+
   const [formData, setformData] = React.useState({
     first_name: "",
     Last_name: "",
@@ -22,7 +20,6 @@ const Placeorder = () => {
     Phone: "",
   });
 
-  // Handle the change in input values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setformData((prev) => ({
@@ -31,112 +28,166 @@ const Placeorder = () => {
     }));
   };
 
-
-
-
   const PlaceOrderClicked = (e) => {
     e.preventDefault();
-   
+
     const requiredFields = ['first_name', 'Last_name', 'email', 'Password', 'Country', 'City', 'Street'];
+    const numberFieldValid = formData.Phone !== "" && formData.ZipCode !== "";
+    const allFieldsValid = requiredFields.every(field => formData[field]?.trim() !== "");
 
-   
-    const numberFieldValid = formData.phone !== "" && formData.zipCode !== "";
-    const allFieldsValid = requiredFields.every(field => {
-      const value = formData[field];
-      return typeof value === 'string' && value.trim() !== '';
-    });
-
-    // If all fields are valid and numberFieldValid is true, navigate to /Orders
     if (allFieldsValid && numberFieldValid) {
       navigate('/Orders');
       toast.success("The request was completed successfully");
     } else {
-      toast.error("First must fill all delivery Feilds");
+      toast.error("Please fill in all required delivery fields.");
     }
   };
 
-
-
-
   return (
-    <div>
-      <div className="flex justify-center">
-        <Title text1={'Place '} text2={'Order'} />
-      </div>
-
-
-      <div className="flex flex-col sm:flex sm:flex-row sm:justify-between w-full ">
-        <div className="px-5 sm:w-1/2 ">
-          <Title text1={'delivery '} text2={'Information'} />
-          <form className="sm:w-3/4" onSubmit={PlaceOrderClicked}>
-            <div className="w-full flex gap-3">
-              <input className="w-1/2 h-8 outline px-3" name="first_name" value={formData.first_name} onChange={handleInputChange} type="text" placeholder="Enter First Name" />
-              <input className="w-1/2 h-8 outline px-3" name="Last_name" value={formData.Last_name} onChange={handleInputChange} type="text" placeholder="Enter Last Name" />
-            </div>
-
-            <div className="flex flex-col w-full my-2">
-              <input className="w-auto h-8 outline px-3" name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="Enter email" />
-              <input className="w-auto h-8 outline my-2 px-3" name="Password" value={formData.Password} onChange={handleInputChange} type="password" placeholder="Enter Password" />
-            </div>
-
-
-            <div className="flex gap-2">
-              <input className="w-1/2 outline h-8 px-3" name="Country" value={formData.Country} onChange={handleInputChange} type="text" placeholder="country" />
-              <input className="w-1/2 outline h-8 px-3" name="City" value={formData.City} onChange={handleInputChange} type="text" placeholder="city" />
-            </div>
-
-            <div className="flex gap-2 my-2">
-              <input className="w-1/2 outline h-8 px-3" name="ZipCode" value={formData.ZipCode} onChange={handleInputChange} type="number" placeholder="Zipcode" />
-              <input className="w-1/2 outline h-8 px-3" name="Street" value={formData.Street} onChange={handleInputChange} type="text" placeholder="street" />
-            </div>
-
-            <div className="flex flex-col">
-              <input className="w-auto outline h-8 outline px-3" name="Phone" value={formData.Phone} onChange={handleInputChange} type="number" placeholder="Enter Phone" />
-
-              <div className="flex flex-col mt-3">
-                <p>(optional)</p>
-                <input className="w-auto outline h-8 my-2 outline px-3" type="text" placeholder="Archaeological landmark" />
-              </div>
-
-              <div className="flex justify-center cursor-pointer mt-5">
-                <button className="bg-black text-white text-xl p-2 w-36 h-12 hover:bg-gray-700">Place Order</button>
-              </div>
-            </div>
-
-
-          </form>
+    <div className="bg-gray-100 min-h-screen py-10 px-5">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center mb-10">
+          <Title text1={"Place "} text2={"Order"} />
         </div>
 
-
-        <div className="flex flex-col w-full sm:w-1/3 px-5">
-          <TotalCart />
-          <div className="">
-            <div className="flex gap-16 mt-10 ">
-
-              <div className="">
-                <div className={`${method === 'Mada' ? 'bg-green-700' : 'hidden'} w-4 h-4 rounded-full`}></div>
-                <img onClick={() => setmetod('Mada')} className={`sm:w-24 sm:h-14 w-16 h-12 cursor-pointer`} src="src\assets\My_assets\Mada.png.webp" alt="" />
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Delivery Form */}
+          <div className="bg-white p-8 rounded-2xl shadow-md w-full lg:w-2/3">
+            <Title text1={"Delivery "} text2={"Information"} />
+            <form onSubmit={PlaceOrderClicked} className="space-y-4 mt-4">
+              <div className="flex gap-4">
+                <input
+                  name="first_name"
+                  value={formData.first_name}
+                  onChange={handleInputChange}
+                  type="text"
+                  placeholder="First Name"
+                  className="input-field p-1"
+                />
+                <input
+                  name="Last_name"
+                  value={formData.Last_name}
+                  onChange={handleInputChange}
+                  type="text"
+                  placeholder="Last Name"
+                  className="input-field p-1"
+                />
               </div>
 
-              <div className="">
-                <div className={`${method === 'Visa' ? 'bg-green-700' : 'hidden'} rounded-full w-4 h-4`}></div>
-                <img onClick={() => setmetod('Visa')} className={`sm:w-24 sm:h-14 w-16 h-12 cursor-pointer`} src="src\assets\My_assets\Visa-Logo.png" alt="" />
+              <input
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                type="email"
+                placeholder="Email"
+                className="input-field w-full p-1"
+              />
+
+              <input
+                name="Password"
+                value={formData.Password}
+                onChange={handleInputChange}
+                type="password"
+                placeholder="Password"
+                className="input-field w-full p-1"
+              />
+
+              <div className="flex gap-4">
+                <input
+                  name="Country"
+                  value={formData.Country}
+                  onChange={handleInputChange}
+                  type="text"
+                  placeholder="Country"
+                  className="input-field p-1"
+                />
+                <input
+                  name="City"
+                  value={formData.City}
+                  onChange={handleInputChange}
+                  type="text"
+                  placeholder="City"
+                  className="input-field p-1"
+                />
               </div>
 
-              <div className="">
-                <div className={`rounded-full w-4 h-4 ${method === 'Barq' ? 'bg-green-700' : 'hidden'}`}></div>
-                <img onClick={() => setmetod('Barq')} className={`sm:w-24 sm:h-14 w-16 h-12 cursor-pointer`} src="src\assets\My_assets\barq.png" alt="" />
+              <div className="flex gap-4">
+                <input
+                  name="ZipCode"
+                  value={formData.ZipCode}
+                  onChange={handleInputChange}
+                  type="number"
+                  placeholder="Zip Code"
+                  className="input-field p-1"
+                />
+                <input
+                  name="Street"
+                  value={formData.Street}
+                  onChange={handleInputChange}
+                  type="text"
+                  placeholder="Street"
+                  className="input-field p-1"
+                />
               </div>
 
-            </div>
+              <input
+                name="Phone"
+                value={formData.Phone}
+                onChange={handleInputChange}
+                type="number"
+                placeholder="Phone"
+                className="input-field w-full p-1"
+              />
+
+              <div className="flex flex-col">
+                <label className="text-sm text-gray-600 mt-2">(Optional)</label>
+                <input
+                  type="text"
+                  placeholder="Archaeological landmark"
+                  className="input-field w-full p-1"
+                />
+              </div>
+
+              <div className="flex justify-center mt-6">
+                <button
+                  type="submit"
+                  className="bg-black text-white text-lg px-6 py-3 rounded-xl hover:bg-gray-800 transition duration-300"
+                >
+                  Place Order
+                </button>
+              </div>
+            </form>
           </div>
 
+          {/* Summary & Payment */}
+          <div className="w-full lg:w-1/3 space-y-6">
+            <TotalCart />
+
+            <div className="bg-white p-6 rounded-2xl shadow-md">
+              <h2 className="text-lg font-semibold mb-4">Choose Payment Method</h2>
+              <div className="flex justify-around items-center gap-4">
+                {[
+                  { name: "Mada", src: "src/assets/My_assets/Mada.png.webp" },
+                  { name: "Visa", src: "src/assets/My_assets/Visa-Logo.png" },
+                  { name: "Barq", src: "src/assets/My_assets/barq.png" },
+                ].map(({ name, src }) => (
+                  <div key={name} className="flex flex-col items-center space-y-1 cursor-pointer" onClick={() => setmetod(name)}>
+                    <div className={`w-4 h-4 rounded-full ${method === name ? "bg-green-600" : "bg-gray-300"}`} />
+                    <img
+                      src={src}
+                      alt={`${name} logo`}
+                      className="w-20 h-14 object-contain transition-transform hover:scale-105"
+                    />
+                    <p className="text-xs text-gray-700">{name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Placeorder
+export default Placeorder;
