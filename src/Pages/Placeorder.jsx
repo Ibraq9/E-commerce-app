@@ -3,6 +3,10 @@ import TotalCart from "../Components/TotalCart";
 import Title from "../Components/Title";
 import { shopContext } from "../Context/ShopContext";
 import { toast } from "react-toastify";
+import VisaLogo from "../assets/My_assets/Visa-Logo.png";
+import MadaLogo from "../assets/My_assets/Mada.webp";
+import BarqLogo from "../assets/My_assets/barq.png";
+
 
 const Placeorder = () => {
   const [method, setmetod] = React.useState("Visa");
@@ -167,10 +171,10 @@ const Placeorder = () => {
               <h2 className="text-lg font-semibold mb-4">Choose Payment Method</h2>
               <div className="flex justify-around items-center gap-4">
                 {[
-                  { name: "Mada", src: "./assets/My_assets/Mada.png.webp" },
-                  { name: "Visa", src: "./assets/My_assets/Visa-Logo.png" },
-                  { name: "Barq", src: "./assets/My_assets/barq.png" },
-                ].map(({ name, src }) => (
+                  { name: "Mada", src: MadaLogo },
+                  { name: "Visa", src: VisaLogo },
+                  { name: "Barq", src: BarqLogo },
+                ].map(({name,src}) => (
                   <div key={name} className="flex flex-col items-center space-y-1 cursor-pointer" onClick={() => setmetod(name)}>
                     <div className={`w-4 h-4 rounded-full ${method === name ? "bg-green-600" : "bg-gray-300"}`} />
                     <img
